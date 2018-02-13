@@ -2,13 +2,11 @@ angular.module('video-player')
 
 .component('search', {
   controller: function(){
-    console.log(this)
-    this.result = () => {
-    }
+    console.log(this);
   },
 
   bindings: {
-    search: '<'
+    result: '<'
   },
 
   templateUrl: 'src/templates/search.html'

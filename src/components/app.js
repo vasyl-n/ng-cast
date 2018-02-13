@@ -2,29 +2,27 @@ angular.module('video-player')
 
 .component('app', {
   controller: function($scope, youTube) {
-    this.selectVideo = () => {
-    };
-    this.searchResults = () => {
-    };
     this.currentVideo = window.exampleVideoData[0];
     this.videos = window.exampleVideoData;
-    this.click = function(arg){
-      console.log("called");
-      this.currentVideo = arg;
+
+    this.selectVideo = (selectedVideo) => {
+      this.currentVideo = selectedVideo;
     };
 
-    this.search = (query='pepsi') => {
-      youTube.sendRequest(this.handleApiRequest, query)
-    };
-
-    this.handleApiRequest = (data) => {
+    this.result = (data) => {
       this.videos = data;
       this.currentVideo = data[0];
+    }
+
+    this.searchResults = (query='something') => {
+      youTube.search(query, this.result);
+    };
+
+    this.$onInit = function() {
+      this.searchResults();
     };
 
   },
-
-
 
   templateUrl: 'src/templates/app.html'
 
