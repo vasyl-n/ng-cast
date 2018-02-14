@@ -1,7 +1,7 @@
 angular.module('video-player')
 
 .component('app', {
-  controller: function($scope, youTube) {
+  controller: function($scope) {
     this.currentVideo = window.exampleVideoData[0];
     this.videos = window.exampleVideoData;
 
@@ -12,15 +12,11 @@ angular.module('video-player')
     this.result = (data) => {
       this.videos = data;
       this.currentVideo = data[0];
-    }
-
-    this.searchResults = (query='something') => {
-      youTube.search(query, this.result);
     };
 
-    this.$onInit = function() {
-      this.searchResults();
-    };
+    // this.$onInit = function() {
+    //   this.searchResults();
+    // };
 
   },
 

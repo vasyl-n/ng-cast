@@ -1,8 +1,7 @@
 angular.module('video-player')
 
 .component('videoListEntry', {
-  controller: function($scope){
-    console.log(this)
+  controller: function(){
     this.onClick = () => {
       this.click(this.video);
     };

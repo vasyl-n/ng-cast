@@ -1,8 +1,15 @@
 angular.module('video-player')
 
 .component('search', {
-  controller: function(){
+  controller: function(youTube){
     console.log(this);
+
+    this.debouncedSearch = youTube.debounce( youTube.search, 500 );
+
+    this.searchResults = (query='something') => {
+      this.debouncedSearch(query, this.result);
+    };
+
   },
 
   bindings: {
